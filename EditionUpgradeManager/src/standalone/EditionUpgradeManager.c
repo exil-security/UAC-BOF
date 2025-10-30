@@ -197,7 +197,7 @@ int main(int argc, char *argv[]) {
             bop.cbStruct = sizeof(bop);
             bop.dwClassContext = CLSCTX_LOCAL_SERVER;
 
-            hr = CoGetObject(szBuffer, (BIND_OPTS *)&bop, &IID_IEditionUpgradeManager, &Manager);
+            hr = CoGetObject(szBuffer, (BIND_OPTS *)&bop, &IID_IEditionUpgradeManager, (void**) &Manager);
 
             if (SUCCEEDED(hr)) {
                 Data[0] = 2;
@@ -246,6 +246,5 @@ int main(int argc, char *argv[]) {
         printf("Failed to delete folder %s: %d\n", tempSystem32, GetLastError());
     }
 
-    return;
-
+    return 0;
 }

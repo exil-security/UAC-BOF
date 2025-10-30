@@ -1,10 +1,10 @@
 {
   "name": "SilentCleanupWinDir",
   "version": "1.0.0",
-  "command_name": "SilentCleanupWinDir",
-  "extension_author": "icyguider",
+  "command_name": "silentcleanup",
+  "extension_author": "exil",
   "original_author": "icyguider",
-  "repo_url": "NA",
+  "repo_url": "https://github.com/exil-security/UAC-BOF",
   "help": "Perform UAC bypass via the \"Environment\\windir\" registry key and SilentCleanup scheduled task",
   "long_help": "",
   "depends_on": "coff-loader",
@@ -13,7 +13,12 @@
     {
       "os": "windows",
       "arch": "amd64",
-      "path": "bin/SilentCleanupWinDirBOF.o"
+      "path": "SilentCleanupWinDirBOF.x64.o"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "SilentCleanupWinDirBOF.x86.o"
     }
   ],
   "arguments": [

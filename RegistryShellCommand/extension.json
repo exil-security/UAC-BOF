@@ -1,10 +1,10 @@
 {
   "name": "RegistryShellCommand",
   "version": "1.0.0",
-  "command_name": "RegistryShellCommand",
-  "extension_author": "icyguider",
+  "command_name": "registrycommand",
+  "extension_author": "exil",
   "original_author": "icyguider",
-  "repo_url": "NA",
+  "repo_url": "https://github.com/exil-security/UAC-BOF",
   "help": "Perform UAC bypass via modifying the \"ms-settings\\Shell\\Open\\command\" registry key",
   "long_help": "",
   "depends_on": "coff-loader",
@@ -13,7 +13,12 @@
     {
       "os": "windows",
       "arch": "amd64",
-      "path": "bin/RegistryShellCommandBOF.o"
+      "path": "RegistryShellCommandBOF.x64.o"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "RegistryShellCommandBOF.x86.o"
     }
   ],
   "arguments": [

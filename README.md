@@ -40,12 +40,10 @@ The BOFs can be utilized by running their corresponding subcommands in the Havoc
 
 Additionally, `extension.json` files have been provided for each UAC bypass method if you wish to use them with Sliver C2. See below for sample instructions on how to load and use the extensions:
 ```
-# Copy folder for desired UAC bypass to the sliver extensions folder
-cp -rp ~/dev/UACBypasses/SspiUacBypass /root/.sliver-client/extensions/
-# CD into the new extension folder and run make
-cd /root/.sliver-client/extensions/SspiUacBypass/; make
+# CD into the extension folder and run make install
+cd -rp ~/dev/UACBypasses/SspiUacBypass/; make install
 # From sliver client cli, load extension by providing new path
-extensions load /root/.sliver-client/extensions/SspiUacBypass
+extensions load /root/.sliver-client/extensions/sspidatagram
 ```
 
 <details>
