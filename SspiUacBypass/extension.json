@@ -1,7 +1,7 @@
 {
   "name": "SspiUacBypass",
   "version": "1.0.0",
-  "command_name": "sspidatagram",
+  "command_name": "uac-sspidatagram",
   "extension_author": "exil",
   "original_author": "icyguider",
   "repo_url": "https://github.com/exil-security/UAC-BOF",

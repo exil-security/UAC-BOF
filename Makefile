@@ -36,33 +36,33 @@ bof:
 	$(CC_x86) -c EditionUpgradeManager/src/EditionUpgradeManagerBOF.c -w -o EditionUpgradeManager/bin/EditionUpgradeManagerBOF.x86.o
 
 install: bof
-	mkdir -p -m 700 ~/.sliver-client/extensions/sspidatagram/
-	cp SspiUacBypass/extension.json ~/.sliver-client/extensions/sspidatagram/
-	cp SspiUacBypass/bin/SspiUacBypassBOF.*.o ~/.sliver-client/extensions/sspidatagram/
+	mkdir -p -m 700 ~/.sliver-client/extensions/uac-sspidatagram/
+	cp SspiUacBypass/extension.json ~/.sliver-client/extensions/uac-sspidatagram/
+	cp SspiUacBypass/bin/SspiUacBypassBOF.*.o ~/.sliver-client/extensions/uac-sspidatagram/
 	
-	mkdir -p -m 700 ~/.sliver-client/extensions/trustedpath/
-	cp TrustedPathDLLHijack/extension.json ~/.sliver-client/extensions/trustedpath/
-	cp TrustedPathDLLHijack/bin/TrustedPathDLLHijackBOF.*.o ~/.sliver-client/extensions/trustedpath/
+	mkdir -p -m 700 ~/.sliver-client/extensions/uac-trustedpath/
+	cp TrustedPathDLLHijack/extension.json ~/.sliver-client/extensions/uac-trustedpath/
+	cp TrustedPathDLLHijack/bin/TrustedPathDLLHijackBOF.*.o ~/.sliver-client/extensions/uac-trustedpath/
 	
-	mkdir -p -m 700 ~/.sliver-client/extensions/registrycommand/
-	cp RegistryShellCommand/extension.json ~/.sliver-client/extensions/registrycommand/
-	cp RegistryShellCommand/bin/RegistryShellCommandBOF.*.o ~/.sliver-client/extensions/registrycommand/
+	mkdir -p -m 700 ~/.sliver-client/extensions/uac-registrycommand/
+	cp RegistryShellCommand/extension.json ~/.sliver-client/extensions/uac-registrycommand/
+	cp RegistryShellCommand/bin/RegistryShellCommandBOF.*.o ~/.sliver-client/extensions/uac-registrycommand/
 	
-	mkdir -p -m 700 ~/.sliver-client/extensions/silentcleanup/
-	cp SilentCleanupWinDir/extension.json ~/.sliver-client/extensions/silentcleanup/
-	cp SilentCleanupWinDir/bin/SilentCleanupWinDirBOF.*.o ~/.sliver-client/extensions/silentcleanup/
+	mkdir -p -m 700 ~/.sliver-client/extensions/uac-silentcleanup/
+	cp SilentCleanupWinDir/extension.json ~/.sliver-client/extensions/uac-silentcleanup/
+	cp SilentCleanupWinDir/bin/SilentCleanupWinDirBOF.*.o ~/.sliver-client/extensions/uac-silentcleanup/
 	
-	mkdir -p -m 700 ~/.sliver-client/extensions/elevatedcom/
-	cp CmstpElevatedCOM/extension.json ~/.sliver-client/extensions/elevatedcom/
-	cp CmstpElevatedCOM/bin/CmstpElevatedCOMBOF.*.o ~/.sliver-client/extensions/elevatedcom/
+	mkdir -p -m 700 ~/.sliver-client/extensions/uac-elevatedcom/
+	cp CmstpElevatedCOM/extension.json ~/.sliver-client/extensions/uac-elevatedcom/
+	cp CmstpElevatedCOM/bin/CmstpElevatedCOMBOF.*.o ~/.sliver-client/extensions/uac-elevatedcom/
 	
-	mkdir -p -m 700 ~/.sliver-client/extensions/colordataproxy/
-	cp ColorDataProxy/extension.json ~/.sliver-client/extensions/colordataproxy/
-	cp ColorDataProxy/bin/ColorDataProxyBOF.*.o ~/.sliver-client/extensions/colordataproxy/
+	mkdir -p -m 700 ~/.sliver-client/extensions/uac-colordataproxy/
+	cp ColorDataProxy/extension.json ~/.sliver-client/extensions/uac-colordataproxy/
+	cp ColorDataProxy/bin/ColorDataProxyBOF.*.o ~/.sliver-client/extensions/uac-colordataproxy/
 
-	mkdir -p -m 700 ~/.sliver-client/extensions/editionupgrade/
-	cp EditionUpgradeManager/extension.json ~/.sliver-client/extensions/editionupgrade/
-	cp EditionUpgradeManager/bin/EditionUpgradeManagerBOF.*.o ~/.sliver-client/extensions/editionupgrade/
+	mkdir -p -m 700 ~/.sliver-client/extensions/uac-editionupgrade/
+	cp EditionUpgradeManager/extension.json ~/.sliver-client/extensions/uac-editionupgrade/
+	cp EditionUpgradeManager/bin/EditionUpgradeManagerBOF.*.o ~/.sliver-client/extensions/uac-editionupgrade/
 	
 
 standalone:

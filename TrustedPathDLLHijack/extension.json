@@ -1,7 +1,7 @@
 {
   "name": "TrustedPathDLLHijack",
   "version": "1.0.0",
-  "command_name": "trustedpath",
+  "command_name": "uac-trustedpath",
   "extension_author": "exil",
   "original_author": "icyguider",
   "repo_url": "https://github.com/exil-security/UAC-BOF",

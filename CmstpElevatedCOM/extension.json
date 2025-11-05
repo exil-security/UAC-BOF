@@ -1,7 +1,7 @@
 {
   "name": "CmstpElevatedCOM",
   "version": "1.0.0",
-  "command_name": "elevatedcom",
+  "command_name": "uac-elevatedcom",
   "extension_author": "exil",
   "original_author": "icyguider",
   "repo_url": "https://github.com/exil-security/UAC-BOF",
